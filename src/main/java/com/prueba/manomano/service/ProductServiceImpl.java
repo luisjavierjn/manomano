@@ -7,6 +7,7 @@ import com.prueba.manomano.repository.ProductRepository;
 import com.prueba.manomano.repository.entities.Category;
 import com.prueba.manomano.repository.entities.Product;
 import com.prueba.manomano.service.mapper.ProductServiceMapper;
+import java.time.LocalDateTime;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,8 +28,11 @@ public class ProductServiceImpl implements ProductService {
 
     public ProductResponseList applyFilter(ProductDTO productDTO) {
         Category category = categoryRepository.findCategoryById(productDTO.getCatId());
-        List<Product> productList = productRepository.findProductsByCategorizationType(category);
+        List<Product> productList = productRepository.findProductsByCategorizationTypeAndPriceGreaterThanAndStartDateBeforeAndEndDateAfter(
+                category, productDTO.getMinPrice(), LocalDateTime.parse(productDTO.getDiscountExpDate()));
         ProductResponseList productResponseList = new ProductResponseList();
+        productResponseList.categorizationType(category.getId().intValue());
+        productResponseList.description(category.getDesc());
         productResponseList.setProducts(productServiceMapper.getListEntityToProductResponseList(productList));
         return productResponseList;
     }
