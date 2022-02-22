@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @Builder
 public class ProductDTO {
-    String catId;
+    Long catId;
     Double minPrice;
     String discountExpDate;
 }

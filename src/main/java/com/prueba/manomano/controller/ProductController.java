@@ -26,13 +26,13 @@ public class ProductController implements ProductsApi {
 
     @Override
     public ResponseEntity<ProductResponseList> getProducts(
-            @ApiParam(value = "", required = true) @PathVariable("catId") String catId,
+            @ApiParam(value = "", required = true) @PathVariable("catId") Integer catId,
             @ApiParam(value = "", required = true) @PathVariable("minPrice") BigDecimal minPrice,
             @NotNull @Valid String discountExpDate) {
 
         ProductResponseList productResponseList =
                 productService.applyFilter(ProductDTO.builder()
-                        .catId(catId)
+                        .catId(catId.longValue())
                         .minPrice(minPrice.doubleValue())
                         .discountExpDate(discountExpDate)
                         .build()

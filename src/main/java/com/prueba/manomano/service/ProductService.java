@@ -5,6 +5,6 @@ import com.prueba.manomano.model.ProductResponseList;
 
 public interface ProductService {
 
-    ProductResponseList applyFilter(ProductDTO pdto);
+    ProductResponseList applyFilter(ProductDTO productDTO);
 
 }

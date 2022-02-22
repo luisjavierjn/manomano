@@ -17,7 +17,7 @@ paths:
         - in: path
           name: catId
           schema:
-            type: string
+            type: integer
           required: true
         - in: path
           name: minPrice
