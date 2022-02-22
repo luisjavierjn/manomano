@@ -7,13 +7,23 @@ tags:
   - name: Products
     description: Product system
 paths:
-  /products:
+  /products/{catId}/{minPrice}:
     get:
       tags:
         - Products
       summary: Returns information about products
       operationId: getProducts
       parameters:
+        - in: path
+          name: catId
+          schema:
+            type: string
+          required: true
+        - in: path
+          name: minPrice
+          schema:
+            type: number
+          required: true
         - in: query
           name: discountExpDate
           allowEmptyValue: false
@@ -77,6 +87,10 @@ components:
       description: List of Products
       type: object
       properties:
+        categorizationType:
+          type: string
+        description:
+          type: string
         products:
           type: array
           items:
