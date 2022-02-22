@@ -10,8 +10,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-    List<Product> findProductsByCategorizationTypeAndPriceGreaterThan(Category categorizationType, Double price);
-
     List<Product> findProductsByCategorizationTypeAndPriceGreaterThanAndStartDateBeforeAndEndDateAfter(Category categorizationType, Double price, LocalDateTime startDateTime, LocalDateTime endDateTime);
 
     default List<Product> findProductsByCategorizationTypeAndPriceGreaterThanAndStartDateBeforeAndEndDateAfter(Category categorizationType, Double price, LocalDateTime localDateTime) {
