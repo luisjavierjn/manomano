@@ -41,6 +41,6 @@ class ProductControllerIntegrationTest {
     @Test
     public void shouldReturnOk() throws Exception {
         logger.info("Test shouldReturnOk");
-        this.mockMvc.perform(get("/products/1/50?discountExpDate=2021-04-14T00:00:00")).andDo(print()).andExpect(status().isOk());
+        this.mockMvc.perform(get("/products/1/50.00?discountExpDate=2021-04-14T00:00:00")).andDo(print()).andExpect(status().isOk());
     }
 }
